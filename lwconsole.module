@@ -1,0 +1,46 @@
+<?php
+
+/**
+ * @file
+ * Contains lwconsole.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Form\FormStateInterface;
+
+//use Drupal\Core\Messenger\MessengerInterface;
+//use Drupal\Core\Messenger;
+
+/**
+ * Implements hook_help().
+ */
+function lwconsole_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the lwconsole module.
+    case 'help.page.lwconsole':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Custom module that does something created with Drupal Console') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+  function lwconsole_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {     print_r($form_id);
+    var_dump($form_id);
+    if($form_id == "user_login_form"){
+      $form['pass']['#description'] = t('hoh boy');
+    }
+    //$this->messenger()->addMessage('Hello world');
+  }
+
+function lwconsole_form_user_login_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  // $form['terms_of_use'] = [
+  //   '#type' => 'checkbox',
+  //   '#title' => t("Yeah, well, I agree with the website's terms and conditions."),
+  //   '#required' => TRUE,
+  // ];
+    $form['pass']['#description'] = t('I changed the description - woo hoo');
+}
+

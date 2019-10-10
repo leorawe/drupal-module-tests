@@ -1,0 +1,5 @@
+name: 'lwconsole'
+type: module
+description: 'Custom module that does something created with Drupal Console'
+core: 8.x
+package: 'FooBar'
